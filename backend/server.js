@@ -3,10 +3,10 @@ import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
 
-import connectDB from "./configs/db.js";
+import connectDB from "./configs/mongodb.js";
 
-import authRoutes from "./routes/auth.routes.js";
-import candidateRoutes from "./routes/candidate.routes.js";
+import authRoutes from "./routes/auth_routes.js";
+import candidateRoutes from "./routes/candidate_routes.js";
 
 dotenv.config();
 
