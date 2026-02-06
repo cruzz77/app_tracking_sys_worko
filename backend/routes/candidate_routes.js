@@ -12,14 +12,14 @@ import {
 import authUser from "../middlewares/auth_middleware.js";
 import upload from "../middlewares/upload_middleware.js";
 
-const router = express.Router();
+const candidateRoutes = express.Router();
 
-router.post("/",authUser,upload.single("resume"),createCandidate);
+candidateRoutes.post("/",authUser,upload.single("resume"),createCandidate);
 
-router.get("/", authUser, getCandidates);
-router.get("/stats", authUser, getStats);
-router.get("/:id", authUser, getCandidateById);
-router.put("/:id/status", authUser, updateStatus);
-router.delete("/:id", authUser, deleteCandidate);
+candidateRoutes.get("/", authUser, getCandidates);
+candidateRoutes.get("/stats", authUser, getStats);
+candidateRoutes.get("/:id", authUser, getCandidateById);
+candidateRoutes.put("/:id/status", authUser, updateStatus);
+candidateRoutes.delete("/:id", authUser, deleteCandidate);
 
-export default router;
+export default candidateRoutes;

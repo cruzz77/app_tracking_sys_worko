@@ -7,11 +7,11 @@ import {
 
 import authUser from "../middlewares/auth_middleware.js";
 
-const router = express.Router();
+const authRoutes = express.Router();
 
-router.post("/register", registerUser);
-router.post("/login", loginUser);
+authRoutes.post("/register", registerUser);
+authRoutes.post("/login", loginUser);
 
-router.get("/profile", authUser, getProfile);
+authRoutes.get("/profile", authUser, getProfile);
 
-export default router;
+export default authRoutes;
