@@ -4,7 +4,6 @@ import { AuthProvider } from './context/AuthContext';
 import ErrorBoundary from './components/ErrorBoundary';
 import ProtectedRoute from './routes/ProtectedRoute';
 
-// Lazy loading or explicit import for safety
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
