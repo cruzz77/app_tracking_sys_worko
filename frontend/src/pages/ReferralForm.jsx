@@ -57,7 +57,12 @@ const ReferralForm = () => {
                 data.append('resume', resumeFile);
             }
 
-            const response = await api.post('/candidates', data);
+            const response = await api.post('/candidates', data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
             console.debug('Referral POST Response:', response?.data);
 
             toast.success('Referral added successfully!');

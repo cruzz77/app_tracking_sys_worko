@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({success: false,message: err.message || "Server Error"});
+  res.status(500).json({ success: false, message: err.message || "Server Error" });
 });
 
 const PORT = process.env.PORT || 5090;

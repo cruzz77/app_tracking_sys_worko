@@ -34,8 +34,9 @@ const candidateSchema = new mongoose.Schema(
       index: true
     },
 
-    resumeUrl: {
-      type: String
+    resume: {
+      type: String,
+      default: null
     },
     
     referredBy: {

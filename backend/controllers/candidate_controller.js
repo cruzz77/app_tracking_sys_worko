@@ -6,34 +6,32 @@ const createCandidate = async (req, res) => {
     const { name, email, phone, jobTitle } = req.body;
 
     if (!name || !email || !phone || !jobTitle) {
-        return res.status(400).json({success: false,message: "Missing Details"});
+      return res.status(400).json({ success: false, message: "Missing Details" });
     }
 
     if (!validator.isEmail(email)) {
-      return res.status(400).json({success: false,message: "Invalid Email"});
+      return res.status(400).json({ success: false, message: "Invalid Email" });
     }
 
     if (!validator.isMobilePhone(phone, "any")) {
-      return res.status(400).json({success: false,message: "Invalid Phone"});
+      return res.status(400).json({ success: false, message: "Invalid Phone" });
     }
 
     const exists = await Candidate.findOne({ email });
     if (exists) {
-      return res.status(400).json({success: false,message: "Candidate already exists"});
+      return res.status(400).json({ success: false, message: "Candidate already exists" });
     }
-
-    const resumeUrl = req.file ? req.file.path : "";
 
     const candidate = await Candidate.create({
       name,
       email,
       phone,
       jobTitle,
-      resumeUrl,
+      resume: req.file ? req.file.filename : null,
       referredBy: req.userId
     });
 
-    res.status(201).json({success: true,candidate});
+    res.status(201).json({ success: true, candidate });
 
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -64,7 +62,7 @@ const getCandidates = async (req, res) => {
 
     const total = await Candidate.countDocuments(query);
 
-    res.json({success: true,total,candidates});
+    res.json({ success: true, total, candidates });
 
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -77,7 +75,7 @@ const getCandidateById = async (req, res) => {
     const candidate = await Candidate.findById(req.params.id);
 
     if (!candidate) {
-      return res.status(404).json({success: false,message: "Not Found"});
+      return res.status(404).json({ success: false, message: "Not Found" });
     }
 
     res.json({ success: true, candidate });
@@ -95,7 +93,7 @@ const updateStatus = async (req, res) => {
     const allowed = ["Pending", "Reviewed", "Hired"];
 
     if (!allowed.includes(status)) {
-      return res.status(400).json({success: false,message: "Invalid Status"});
+      return res.status(400).json({ success: false, message: "Invalid Status" });
     }
 
     const candidate = await Candidate.findByIdAndUpdate(
@@ -116,7 +114,7 @@ const deleteCandidate = async (req, res) => {
   try {
     await Candidate.findByIdAndDelete(req.params.id);
 
-    res.json({success: true,message: "Deleted successfully"});
+    res.json({ success: true, message: "Deleted successfully" });
 
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -131,7 +129,7 @@ const getStats = async (req, res) => {
     const reviewed = await Candidate.countDocuments({ status: "Reviewed" });
     const hired = await Candidate.countDocuments({ status: "Hired" });
 
-    res.json({success: true,stats: { total, pending, reviewed, hired }});
+    res.json({ success: true, stats: { total, pending, reviewed, hired } });
 
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
@@ -139,10 +137,10 @@ const getStats = async (req, res) => {
 };
 
 export {
-    createCandidate, 
-    getCandidates,
-    getCandidateById, 
-    updateStatus, 
-    deleteCandidate, 
-    getStats
+  createCandidate,
+  getCandidates,
+  getCandidateById,
+  updateStatus,
+  deleteCandidate,
+  getStats
 };

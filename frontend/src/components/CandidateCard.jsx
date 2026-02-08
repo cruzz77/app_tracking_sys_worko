@@ -15,7 +15,7 @@ const statusConfigs = {
   Hired: { bg: 'bg-emerald-100', text: 'text-emerald-800', border: 'border-emerald-200' },
 };
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5091';
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5090';
 
 const CandidateCard = ({ candidate, onStatusChange, onDelete }) => {
   if (!candidate) return null;
@@ -24,20 +24,9 @@ const CandidateCard = ({ candidate, onStatusChange, onDelete }) => {
   const status = candidate.status || 'Pending';
   const config = statusConfigs[status] || statusConfigs.Pending;
 
-  // 🔥 FIXED: smart resume URL builder
-  let resumeUrl = null;
-
-  if (candidate.resume) {
-    const clean = candidate.resume.replace(/\\/g, '/');
-
-    // already full URL (S3/future)
-    if (clean.startsWith('http')) {
-      resumeUrl = clean;
-    } else {
-      // local multer file
-      resumeUrl = `${API_BASE}/uploads/${clean}`;
-    }
-  }
+  const resumeUrl = candidate.resume
+    ? `${API_BASE}/uploads/${candidate.resume}`
+    : null;
 
   return (
     <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden flex flex-col transition-all hover:shadow-xl hover:-translate-y-1 group">
