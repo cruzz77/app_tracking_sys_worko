@@ -192,50 +192,6 @@ Example flow:
 5. Change status
 6. Check stats update
 
----
-
-## 📸 Screenshots
-
-### Dashboard
-(Add screenshot)
-
-### Referral Form
-(Add screenshot)
-
----
-
-## 🔒 Validation Rules
-
-- Email validated
-- Phone validated
-- Resume must be `.pdf`
-- Auth required for all protected routes
-
----
-
-## 🚀 Future Improvements
-
-- AWS S3 resume storage
-- Pagination
-- Admin roles
-- Analytics charts
-- Deployment (Render/Vercel)
-- Dark mode
-
----
-
-## 🎯 Assignment Goals Achieved
-
-✅ API integration  
-✅ State management  
-✅ CRUD operations  
-✅ Authentication  
-✅ File uploads  
-✅ Error handling  
-✅ Clean architecture  
-
----
-
 ## 👤 Author
 
 Aditya Chopra  
