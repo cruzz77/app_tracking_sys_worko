@@ -40,11 +40,11 @@ const Dashboard = () => {
                 normalizedCandidates = [];
             }
 
-            console.debug('✅ Normalized Candidates:', normalizedCandidates);
+            console.debug('Normalized Candidates:', normalizedCandidates);
 
             setCandidates(normalizedCandidates);
         } catch (err) {
-            console.error("❌ Dashboard fetch error:", err);
+            console.error("Dashboard fetch error:", err);
             setError("Failed to load dashboard data.");
             toast.error("Sync failed");
         } finally {
@@ -53,7 +53,7 @@ const Dashboard = () => {
     }, []);
 
     useEffect(() => {
-        console.debug('🔄 Dashboard refresh');
+        console.debug('Dashboard refresh');
         fetchData();
     }, [fetchData, location.pathname, location.key]);
 

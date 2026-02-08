@@ -58,14 +58,13 @@ const ReferralForm = () => {
             }
 
             const response = await api.post('/candidates', data);
-            console.debug('✅ Referral POST Response:', response?.data);
+            console.debug('Referral POST Response:', response?.data);
 
             toast.success('Referral added successfully!');
 
-            // Navigate with replace to trigger Dashboard refresh
             navigate('/dashboard', { replace: true });
         } catch (err) {
-            console.error("❌ Referral submission error:", err);
+            console.error("Referral submission error:", err);
             const errorMessage = err.response?.data?.message || 'Submission failed';
             toast.error(errorMessage);
         } finally {
