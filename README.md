@@ -21,6 +21,8 @@ Built as part of the Full-Stack Internship Assignment.
 - Persistent sessions
 
 ### 📊 Dashboard
+<img width="1511" height="816" alt="Screenshot 2026-02-08 at 11 30 35 AM" src="https://github.com/user-attachments/assets/92f3753c-e53a-4a34-888d-ca313d975544" />
+
 - View all referred candidates
 - Search by name / job title / status
 - Status update (Pending → Reviewed → Hired)
