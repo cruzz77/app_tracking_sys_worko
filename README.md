@@ -198,7 +198,7 @@ Example flow:
 
 Aditya Chopra  
 Full Stack Developer  
-GitHub: https://github.com/<your-username>
+GitHub: [https://github.com/<your-username>](https://github.com/cruzz77)
 
 ---
 
