@@ -15,7 +15,8 @@ const statusConfigs = {
   Hired: { bg: 'bg-emerald-100', text: 'text-emerald-800', border: 'border-emerald-200' },
 };
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5090';
+const API_BASE = import.meta.env.VITE_API_URL.replace('/api', '')
+
 
 const CandidateCard = ({ candidate, onStatusChange, onDelete }) => {
   if (!candidate) return null;
