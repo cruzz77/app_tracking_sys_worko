@@ -109,7 +109,7 @@ root
 ### 1️⃣ Clone repo
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/cruzz77/app_tracking_sys_worko
 cd project
 ```
 
